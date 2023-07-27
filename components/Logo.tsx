@@ -2,14 +2,14 @@ import colors from "@/settings/ui/colors";
 import Image from "next/image";
 
 interface IProps {
-  white?: boolean;
+  isWhite?: boolean;
 }
 
-const Logo = ({ white = false }: IProps) => {
+const Logo = ({ isWhite = false }: IProps) => {
   return (
     <div className="logo flex items-center gap-2">
       <Image
-        src={white ? "/logo.png" : "/logo-black.png"}
+        src={isWhite ? "/logo.png" : "/logo-black.png"}
         alt="logo"
         height={40}
         width={40}
@@ -18,7 +18,7 @@ const Logo = ({ white = false }: IProps) => {
       />
       <h2
         className="text-2xl font-SATOSHI font-[900] text-BLACK leading-normal"
-        style={white ? { color: colors.WHITE } : {}}
+        style={isWhite ? { color: colors.WHITE } : {}}
       >
         duggthevicious
       </h2>
