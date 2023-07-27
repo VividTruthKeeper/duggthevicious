@@ -8,6 +8,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        WHITE: "#F6F5F4",
+        LIGHTBLUE: "#E8E5FF",
+        DARKBLUE: "#1C182A",
+        GRAYBLUE: "#423E51",
+        YELLOW: "#FBBF24",
+        GRAY: "#E6E6E6",
+      },
       fontFamily: {
         DM: ["var(--FONTDM)", ...fontFamily.sans],
         INTER: ["var(--FONTINTER)", ...fontFamily.sans],
