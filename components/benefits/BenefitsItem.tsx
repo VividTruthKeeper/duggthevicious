@@ -1,7 +1,8 @@
+import { IBenefit } from "@/types/benefit.types";
 import Image from "next/image";
 
 interface IProps {
-  item: string;
+  item: IBenefit;
 }
 
 const BenefitsItem = ({ item }: IProps) => {
@@ -15,7 +16,11 @@ const BenefitsItem = ({ item }: IProps) => {
         height={28}
         className="w-7 h-7 object-contain"
       />
-      <p className="font-INTER text-WHITE text-lg">{item}</p>
+      <p className="font-INTER text-WHITE text-lg">
+        <span className="font-bold">{item.name + ": "}</span>
+        <br />
+        {item.text}
+      </p>
     </div>
   );
 };

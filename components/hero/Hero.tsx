@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "../Container";
 import CtaBtn from "../CtaBtn";
+import headline from "@/settings/data/headline";
 
 const Hero = () => {
   return (
@@ -12,8 +13,7 @@ const Hero = () => {
               Transform & Grow Your Business Now 🚀
             </h2>
             <p className="font-SATOSHI font-medium text-[18px] text-center text-BLACK w-fit">
-              Here you should expand on your headline. Remember, focus on the
-              benefits for your clients, not on the features.
+              {headline}
             </p>
           </div>
           <div className="flex flex-col gap-3">

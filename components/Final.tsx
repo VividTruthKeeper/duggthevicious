@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "./Container";
 import CtaBtn from "./CtaBtn";
+import final from "@/settings/data/final";
 
 const Final = () => {
   return (
@@ -11,8 +12,7 @@ const Final = () => {
             Ready To Start?
           </h2>
           <p className="text-WHITE font-INTER font-medium text-[22px] max-w-2xl text-center">
-            Here is your last chance to explain how cool your service is. Focus
-            on the benefits for your clients, not on the features.
+            {final}
           </p>
         </div>
         <CtaBtn isWhite />
