@@ -17,6 +17,7 @@ module.exports = {
         YELLOW: "#FBBF24",
         GRAY: "#E6E6E6",
         WHITE_OPAQUE: "rgba(250, 245, 240, 0.08)",
+        FAQ: "rgba(66, 62, 81, 0.04)",
       },
       fontFamily: {
         DM: ["var(--FONTDM)", ...fontFamily.sans],
