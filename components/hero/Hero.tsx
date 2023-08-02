@@ -8,15 +8,15 @@ const Hero = () => {
     <section className="hero bg-LIGHTBLUE">
       <Container className="flex flex-col py-12 items-center">
         <div className="max-w-[800px] w-full flex flex-col items-center gap-16 ">
-          <div className="flex flex-col gap-3">
-            <h2 className="font-SATOSHI font-[900] text-[58px] text-center text-BLACK w-fit">
+          <div className="flex flex-col gap-3 items-center">
+            <h2 className="font-SATOSHI font-[900] text-[58px] text-center text-BLACK w-fit max-md:text-[50px] max-sm:text-[42px]">
               Transform & Grow Your Business Now 🚀
             </h2>
-            <p className="font-SATOSHI font-medium text-[18px] text-center text-BLACK w-fit">
+            <p className="font-SATOSHI font-medium text-[18px] text-center text-BLACK w-fit max-md:text-[16px] max-sm:text-[14px]">
               {headline}
             </p>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 items-center w-full">
             <CtaBtn />
             <Image
               src="/reviews.png"
