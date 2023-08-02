@@ -1,9 +1,9 @@
-import FAQ from "@/components/faq/FAQ";
+import Final from "@/components/Final";
 
 const page = () => {
   return (
     <div>
-      <FAQ />
+      <Final />
     </div>
   );
 };
