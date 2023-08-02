@@ -13,7 +13,7 @@ const Logo = ({ isWhite = false }: IProps) => {
         height={65}
         width={370}
         unoptimized
-        className="w-[370px] h-[65px] object-contain"
+        className="w-[370px] h-[65px] object-contain max-md:w-[300px] max-md:h-[60px] max-sm:w-[240px] max-sm:h-[55px]"
       />
     </div>
   );
