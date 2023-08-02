@@ -24,8 +24,14 @@ const Offer = ({ initiallyOpen, description, standout, title }: IProps) => {
       initial={{ padding: breakpoints["768"] ? "16px 20px" : "16px 24px" }}
       animate={
         open
-          ? { padding: breakpoints["768"] ? "16px 24px" : "16px 32px" }
-          : { padding: breakpoints["768"] ? "16px 20px" : "16px 24px" }
+          ? {
+              padding: breakpoints["768"] ? "16px 24px" : "16px 32px",
+              background: "#EFEDFA",
+            }
+          : {
+              padding: breakpoints["768"] ? "16px 20px" : "16px 24px",
+              background: "#FFFFFF",
+            }
       }
       onClick={() => setOpen(!open)}
     >
