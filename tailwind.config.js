@@ -25,6 +25,9 @@ module.exports = {
         ROBOTO: ["var(--FONTROBOTO)", ...fontFamily.sans],
         SATOSHI: ["Satoshi", ...fontFamily.sans],
       },
+      gridTemplateColumns: {
+        ABOUT: "240px 1fr",
+      },
     },
   },
   plugins: [],

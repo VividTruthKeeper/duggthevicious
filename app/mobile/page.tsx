@@ -1,9 +1,9 @@
-import Services from "@/components/services/Services";
+import About from "@/components/about/About";
 
 const page = () => {
   return (
     <div>
-      <Services />
+      <About />
     </div>
   );
 };
