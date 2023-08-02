@@ -1,9 +1,9 @@
-import About from "@/components/about/About";
+import FAQ from "@/components/faq/FAQ";
 
 const page = () => {
   return (
     <div>
-      <About />
+      <FAQ />
     </div>
   );
 };
