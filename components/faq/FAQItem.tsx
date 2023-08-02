@@ -2,8 +2,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { IFAQ } from "@/types/faq.types";
 
-const FAQItem = () => {
+const FAQItem = ({ question, answer }: IFAQ) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div
@@ -11,7 +12,7 @@ const FAQItem = () => {
       onClick={() => setOpen(!open)}
     >
       <motion.div
-        className="flex items-center"
+        className="grid grid-cols-FAQ items-center max-sm:grid-cols-FAQ_SM"
         initial={{ gap: "24px" }}
         animate={open ? { gap: "16px" } : { gap: "24px" }}
       >
@@ -24,22 +25,23 @@ const FAQItem = () => {
             alt="plus"
             width={16}
             height={16}
-            className="w-4 h-4 object-contain"
+            className="w-4 h-4 object-contain max-sm:w-3 max-sm:h-3"
           />
         </motion.div>
-        <h4 className="text-xl font-bold font-INTER">What is Framer?</h4>
+        <h4 className="text-xl font-bold font-INTER max-sm:text-base">
+          {question}
+        </h4>
       </motion.div>
       <motion.p
-        className="font-INTER text-base text-DARKBLUE overflow-hidden"
+        className="font-INTER text-base text-DARKBLUE overflow-hidden max-sm:text-sm"
         initial={{ height: "0px" }}
         animate={
           open
-            ? { height: "24px", marginTop: "32px", opacity: "100%" }
+            ? { height: "fit-content", marginTop: "32px", opacity: "100%" }
             : { height: "0px", marginTop: "0px", opacity: "0%" }
         }
       >
-        Est magna officia pariatur eu fugiat exercitation quis sit et dolore
-        velit adipisicing mollit.
+        {answer}
       </motion.p>
     </div>
   );

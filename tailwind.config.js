@@ -27,6 +27,8 @@ module.exports = {
       },
       gridTemplateColumns: {
         ABOUT: "240px 1fr",
+        FAQ: "16px 1fr",
+        FAQ_SM: "12px 1fr",
       },
     },
   },

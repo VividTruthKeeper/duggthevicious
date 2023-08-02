@@ -24,6 +24,7 @@ const Hero = () => {
               width={300}
               height={43}
               className="object-contain w-[300px] h-[43px]"
+              unoptimized
             />
           </div>
         </div>
