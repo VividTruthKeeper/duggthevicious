@@ -42,11 +42,13 @@ const About = () => {
             </div>
             <div className="flex flex-col gap-3">
               <p className="font-SATOSHI text-WHITE text-lg max-md:text-base">
-                About me/us.
+                About me.
               </p>
               <p className="font-SATOSHI text-WHITE text-lg max-md:text-base">
-                I am Aydogdy. I am a web developer with 3 years of commercial
-                experience. I will help you bring your digital vision to life
+                Hello! I am Aydogdy. I am a web developer with 3 years of
+                hands-on experience in crafting exception online experiences. I
+                will help you create an outstanding online presence for your
+                business.
               </p>
             </div>
           </div>
