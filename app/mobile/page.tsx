@@ -1,9 +1,9 @@
-import Hero from "@/components/hero/Hero";
+import Benefits from "@/components/benefits/Benefits";
 
 const page = () => {
   return (
     <div>
-      <Hero />
+      <Benefits />
     </div>
   );
 };

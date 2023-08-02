@@ -4,7 +4,7 @@ import benefits from "@/settings/data/benefits";
 
 const BenefitsList = () => {
   return (
-    <div className="benefits-list flex flex-col gap-3 max-w-[540px] w-full">
+    <div className="benefits-list flex flex-col gap-3 max-w-[540px] w-full max-sm:max-w-none">
       {benefits.map((item) => (
         <BenefitsItem item={item} key={v4()} />
       ))}

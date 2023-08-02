@@ -5,11 +5,3 @@
 .SATOSHI {
   font-family: "Satoshi", "Inter", sans-serif;
 }
-
-.container {
-  overflow: hidden;
-  padding: 0 32px;
-  margin: 0 auto;
-  max-width: 1404px;
-  width: 100%;
-}
