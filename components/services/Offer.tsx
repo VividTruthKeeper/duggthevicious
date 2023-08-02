@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 
 interface IProps {
   initiallyOpen?: boolean;
+  title: string;
+  description: string;
+  standout: string;
 }
 
-const Offer = ({ initiallyOpen }: IProps) => {
+const Offer = ({ initiallyOpen, description, standout, title }: IProps) => {
   const [open, setOpen] = useState<boolean | undefined>(initiallyOpen);
   return (
     <motion.div
@@ -36,7 +39,7 @@ const Offer = ({ initiallyOpen }: IProps) => {
             initial={{ fontSize: "36px" }}
             animate={open ? { fontSize: "36px" } : { fontSize: "24px" }}
           >
-            Offer One
+            {title}
           </motion.h3>
           <motion.div
             className="overflow-hidden"
@@ -53,15 +56,14 @@ const Offer = ({ initiallyOpen }: IProps) => {
           </motion.div>
         </div>
         <p className="text-DARKBLUE text-lg font-SATOSHI overflow-hidden">
-          Put your main offer here. Outline benefits and features any potential
-          clients need to know.
+          {description}
         </p>
         <motion.p
           className="text-DARKBLUE text-lg font-SATOSHI overflow-hidden font-bold"
-          initial={{ height: "20px" }}
-          animate={open ? { height: "24px" } : { height: "0px" }}
+          initial={{ height: "32px" }}
+          animate={open ? { height: "32px" } : { height: "0px" }}
         >
-          Put a stand out benefit here.
+          {standout}
         </motion.p>
       </div>
     </motion.div>
