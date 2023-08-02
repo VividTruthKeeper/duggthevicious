@@ -1,9 +1,9 @@
-import Benefits from "@/components/benefits/Benefits";
+import Services from "@/components/services/Services";
 
 const page = () => {
   return (
     <div>
-      <Benefits />
+      <Services />
     </div>
   );
 };

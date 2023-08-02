@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "usehooks-ts";
 
 interface IProps {
   initiallyOpen?: boolean;
@@ -12,11 +13,20 @@ interface IProps {
 
 const Offer = ({ initiallyOpen, description, standout, title }: IProps) => {
   const [open, setOpen] = useState<boolean | undefined>(initiallyOpen);
+  const breakpoints = {
+    1024: useMediaQuery("(max-width: 1024px)"),
+    768: useMediaQuery("(max-width: 768px)"),
+    640: useMediaQuery("(max-width: 640px)"),
+  };
   return (
     <motion.div
       className="service-offer flex flex-col gap-2 py-4 px-8 relative border-2 border-solid border-[#423E51] rounded-2xl cursor-pointer"
-      initial={{ padding: "16px 24px" }}
-      animate={open ? { padding: "16px 32px" } : { padding: "16px 24px" }}
+      initial={{ padding: breakpoints["768"] ? "16px 20px" : "16px 24px" }}
+      animate={
+        open
+          ? { padding: breakpoints["768"] ? "16px 24px" : "16px 32px" }
+          : { padding: breakpoints["768"] ? "16px 20px" : "16px 24px" }
+      }
       onClick={() => setOpen(!open)}
     >
       <motion.div
@@ -36,8 +46,30 @@ const Offer = ({ initiallyOpen, description, standout, title }: IProps) => {
         <div className="flex items-center gap-[10px] justify-between">
           <motion.h3
             className="text-[36px] text-DARKBLUE font-SATOSHI font-bold"
-            initial={{ fontSize: "36px" }}
-            animate={open ? { fontSize: "36px" } : { fontSize: "24px" }}
+            initial={{
+              fontSize: breakpoints["640"]
+                ? "22px"
+                : breakpoints["768"]
+                ? "26px"
+                : "32px",
+            }}
+            animate={
+              open
+                ? {
+                    fontSize: breakpoints["640"]
+                      ? "22px"
+                      : breakpoints["768"]
+                      ? "26px"
+                      : "32px",
+                  }
+                : {
+                    fontSize: breakpoints["640"]
+                      ? "18px"
+                      : breakpoints["768"]
+                      ? "21px"
+                      : "24px",
+                  }
+            }
           >
             {title}
           </motion.h3>
@@ -55,13 +87,13 @@ const Offer = ({ initiallyOpen, description, standout, title }: IProps) => {
             />
           </motion.div>
         </div>
-        <p className="text-DARKBLUE text-lg font-SATOSHI overflow-hidden">
+        <p className="text-DARKBLUE text-lg font-SATOSHI overflow-hidden max-md:text-base max-sm:text-sm">
           {description}
         </p>
         <motion.p
-          className="text-DARKBLUE text-lg font-SATOSHI overflow-hidden font-bold"
-          initial={{ height: "32px" }}
-          animate={open ? { height: "32px" } : { height: "0px" }}
+          className="text-DARKBLUE text-lg font-SATOSHI overflow-hidden font-bold max-md:text-base max-sm:text-sm"
+          initial={{ height: "fit-content" }}
+          animate={open ? { height: "fit-content" } : { height: "0px" }}
         >
           {standout}
         </motion.p>
