@@ -2,6 +2,7 @@ import services from "@/settings/data/services";
 import Container from "../Container";
 import CtaBtn from "../CtaBtn";
 import Offer from "./Offer";
+import { v4 } from "uuid";
 
 const Services = () => {
   return (
@@ -17,6 +18,7 @@ const Services = () => {
               title={offer.title}
               description={offer.description}
               standout={offer.standout}
+              key={v4()}
             />
           ))}
         </div>
