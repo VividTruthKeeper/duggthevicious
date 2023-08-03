@@ -1,25 +1,33 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useMediaQuery } from "usehooks-ts";
+import { useIntersectionObserver, useMediaQuery } from "usehooks-ts";
 
 interface IProps {
-  initiallyOpen?: boolean;
   title: string;
   description: string;
   standout: string;
 }
 
-const Offer = ({ initiallyOpen, description, standout, title }: IProps) => {
-  const [open, setOpen] = useState<boolean | undefined>(initiallyOpen);
+const Offer = ({ description, standout, title }: IProps) => {
+  const [open, setOpen] = useState<boolean | undefined>(false);
   const breakpoints = {
-    1024: useMediaQuery("(max-width: 1024px)"),
     768: useMediaQuery("(max-width: 768px)"),
     640: useMediaQuery("(max-width: 640px)"),
   };
+  const ref = useRef<HTMLDivElement>(null);
+  const entry = useIntersectionObserver(ref, {
+    rootMargin: "-500px",
+  });
+  const isVisible = !!entry?.isIntersecting;
+
+  useEffect(() => {
+    if (isVisible) setOpen(true);
+  }, [entry]);
   return (
     <motion.div
+      ref={ref}
       className="service-offer flex flex-col gap-2 py-4 px-8 relative border-2 border-solid border-[#423E51] rounded-2xl cursor-pointer"
       initial={{ padding: breakpoints["768"] ? "16px 20px" : "16px 24px" }}
       animate={

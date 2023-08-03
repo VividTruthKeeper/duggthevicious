@@ -12,9 +12,8 @@ const Services = () => {
           What We Offer
         </h2>
         <div className="flex flex-col gap-[10px]">
-          {services.map((offer, index) => (
+          {services.map((offer) => (
             <Offer
-              initiallyOpen={index === 0}
               title={offer.title}
               description={offer.description}
               standout={offer.standout}
