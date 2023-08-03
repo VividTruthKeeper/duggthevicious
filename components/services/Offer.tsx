@@ -18,7 +18,7 @@ const Offer = ({ description, standout, title }: IProps) => {
   };
   const ref = useRef<HTMLDivElement>(null);
   const entry = useIntersectionObserver(ref, {
-    rootMargin: "-200px",
+    rootMargin: breakpoints["640"] ? "-50px" : "-200px",
   });
   const isVisible = !!entry?.isIntersecting;
 
