@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { delay, motion } from "framer-motion";
 import ui from "@/settings/ui/ui";
 import { Animations } from "@/types/animation.types";
@@ -10,11 +10,13 @@ interface IProps {
   type: Animations;
   margin?: string;
   delay?: string;
+  style?: CSSProperties;
 }
 
-const AnimateInView = ({ children, type, margin = "-50%" }: IProps) => {
+const AnimateInView = ({ children, type, margin = "-50%", style }: IProps) => {
   return ui.scrollAnimations ? (
     <motion.div
+      style={style}
       className="animated-box flex flex-col justify-center overflow-hidden w-full"
       initial={animations[type].initial as any}
       whileInView={{

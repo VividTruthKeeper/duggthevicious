@@ -86,7 +86,7 @@ const animations: Record<Animations, Variants> = {
   toLeftOpacity: {
     initial: {
       opacity: 0,
-      x: "-60px",
+      x: "60px",
     },
     inView: {
       opacity: 1,
@@ -99,7 +99,7 @@ const animations: Record<Animations, Variants> = {
   toRightOpacity: {
     initial: {
       opacity: 0,
-      x: "60px",
+      x: "-60px",
     },
     inView: {
       opacity: 1,
