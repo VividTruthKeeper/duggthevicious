@@ -6,4 +6,5 @@ export default {
   GRAYBLUE: "#423E51",
   YELLOW: "#FBBF24",
   GRAY: "#E6E6E6",
+  PROGRESSBAR: "#2980BC",
 };

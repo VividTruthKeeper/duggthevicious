@@ -1,3 +1,4 @@
+import ScrollProgress from "@/components/ScrolProgress";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Roboto, DM_Sans } from "next/font/google";
@@ -33,7 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable}${roboto.variable}${dmsans.variable}`}>
-        {children}
+        <ScrollProgress>{children}</ScrollProgress>
       </body>
     </html>
   );
