@@ -1,8 +1,29 @@
-import Image from "next/image";
-import Container from "../Container";
 import AnimateInView from "../AnimateInView";
+import Container from "../Container";
+import Image from "next/image";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { client } from "@/sanity/lib/client";
+import imgUrl from "@/utils/imgUrl";
 
-const About = () => {
+export interface About {
+  _id: string;
+  _createdAt: string;
+  name: string;
+  link: string;
+  handle: string;
+  subtitle: string;
+  description: string;
+  image: SanityImageSource;
+}
+
+const getData = async (): Promise<About[]> => {
+  const query = `*[_type == 'about']`;
+  const data = await client.fetch(query);
+  return data;
+};
+
+const About = async () => {
+  const data = await getData();
   return (
     <section className="about bg-WHITE py-12 max-md:py-10 max-sm:py-8">
       <Container>
@@ -10,7 +31,7 @@ const About = () => {
           <AnimateInView type="toRightOpacity" margin="-10%">
             <div className="rounded-full overflow-hidden w-[240px] h-[240px] bg-[#8f8f8f] max-lg:w-[180px] max-lg:h-[180px] max-md:w-[140px] max-md:h-[140px] max-sm:w-[110px] max-sm:h-[110px]">
               <Image
-                src="/Aydogdy.png"
+                src={data[0] ? imgUrl(data[0].image).url() : ""}
                 alt="Aydogdy"
                 width={240}
                 height={240}
@@ -24,7 +45,7 @@ const About = () => {
             <div className="flex flex-col gap-[10px]">
               <AnimateInView type="toTopOpacity" margin="-10%">
                 <h2 className="font-SATOSHI font-bold text-WHITE text-[46px] max-lg:text-[40px] max-md:text-[36px] max-sm:text-[32px]">
-                  Aydogdy
+                  {data[0] ? data[0].name : null}
                 </h2>
               </AnimateInView>
               <AnimateInView type="toTopOpacity" margin="-13%">
@@ -37,28 +58,23 @@ const About = () => {
                     className="h-[27px] w-[27px] object-contain"
                   />
                   <a
-                    href="https://twitter.com/duggthevicious"
+                    href={data[0] ? data[0].link : "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-SATOSHI text-WHITE text-lg"
                   >
-                    @duggthevicious
+                    @{data[0] ? data[0].handle : null}
                   </a>
                 </div>
               </AnimateInView>
             </div>
             <div className="flex flex-col gap-3">
               <AnimateInView type="toTopOpacity" margin="-16%">
-                <p className="font-SATOSHI text-WHITE text-lg max-md:text-base">
-                  About me.
-                </p>
+                <p className="font-SATOSHI text-WHITE text-lg max-md:text-base">{data[0] ? data[0].subtitle : null}</p>
               </AnimateInView>
               <AnimateInView type="toTopOpacity" margin="-19%">
                 <p className="font-SATOSHI text-WHITE text-lg max-md:text-base">
-                  Hello! I am Aydogdy. I am a web developer with 3 years of
-                  hands-on experience in crafting exception online experiences.
-                  I will help you create an outstanding online presence for your
-                  business.
+                  {data[0] ? data[0].description : null}
                 </p>
               </AnimateInView>
             </div>

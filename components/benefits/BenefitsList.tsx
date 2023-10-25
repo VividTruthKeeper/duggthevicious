@@ -1,12 +1,16 @@
-import { v4 } from "uuid";
-import BenefitsItem from "./BenefitsItem";
-import benefits from "@/settings/data/benefits";
 import AnimateInView from "../AnimateInView";
+import { Benefits } from "./Benefits";
+import BenefitsItem from "./BenefitsItem";
+import { v4 } from "uuid";
 
-const BenefitsList = () => {
+interface IProps {
+  items: Benefits["items"];
+}
+
+const BenefitsList = ({ items }: IProps) => {
   return (
     <div className="benefits-list flex flex-col gap-3 max-w-[540px] w-full max-sm:max-w-none">
-      {benefits.map((item, index) => (
+      {items.map((item, index) => (
         <AnimateInView type="toTopOpacity" margin={`-${10 + index * 10}%`}>
           <BenefitsItem item={item} key={v4()} />
         </AnimateInView>
