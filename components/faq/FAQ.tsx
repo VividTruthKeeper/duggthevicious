@@ -2,6 +2,7 @@ import AnimateInView from "../AnimateInView";
 import Container from "../Container";
 import FAQItem from "./FAQItem";
 import { client } from "@/sanity/lib/client";
+import revalidationTime from "@/revalidationTime";
 import { v4 } from "uuid";
 
 export interface FAQ {
@@ -19,7 +20,15 @@ export interface FAQs {
 
 const getData = async (): Promise<FAQs[]> => {
   const query = `*[_type == 'faq']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 

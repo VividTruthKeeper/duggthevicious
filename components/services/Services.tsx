@@ -3,7 +3,7 @@ import Container from "../Container";
 import CtaBtn from "../CtaBtn";
 import Offer from "./Offer";
 import { client } from "@/sanity/lib/client";
-import services from "@/settings/data/services";
+import revalidationTime from "@/revalidationTime";
 import { v4 } from "uuid";
 
 export interface Service {
@@ -22,7 +22,15 @@ export interface Services {
 
 const getData = async (): Promise<Services[]> => {
   const query = `*[_type == 'services']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 

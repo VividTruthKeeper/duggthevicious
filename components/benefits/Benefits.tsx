@@ -3,6 +3,7 @@ import BenefitsList from "./BenefitsList";
 import Container from "../Container";
 import CtaBtn from "../CtaBtn";
 import { client } from "@/sanity/lib/client";
+import revalidationTime from "@/revalidationTime";
 
 export interface Benefit {
   name: string;
@@ -18,7 +19,15 @@ export interface Benefits {
 
 const getData = async (): Promise<Benefits[]> => {
   const query = `*[_type == 'benefits']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 

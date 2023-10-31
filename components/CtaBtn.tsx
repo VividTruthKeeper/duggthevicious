@@ -1,5 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import colors from "@/settings/ui/colors";
+import revalidationTime from "@/revalidationTime";
 
 interface IProps {
   isWhite?: boolean;
@@ -14,7 +15,15 @@ interface CTA {
 
 const getData = async (): Promise<CTA[]> => {
   const query = `*[_type == 'cta']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 

@@ -3,6 +3,7 @@ import Container from "./Container";
 import CtaBtn from "./CtaBtn";
 import React from "react";
 import { client } from "@/sanity/lib/client";
+import revalidationTime from "@/revalidationTime";
 
 export interface About {
   _id: string;
@@ -13,7 +14,15 @@ export interface About {
 
 const getData = async (): Promise<About[]> => {
   const query = `*[_type == 'final']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 

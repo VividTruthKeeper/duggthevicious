@@ -3,6 +3,7 @@ import CtaBtn from "../CtaBtn";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
+import revalidationTime from "@/revalidationTime";
 
 interface Hero {
   _id: string;
@@ -15,7 +16,15 @@ interface Hero {
 
 const getData = async (): Promise<Hero[]> => {
   const query = `*[_type == 'hero']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 

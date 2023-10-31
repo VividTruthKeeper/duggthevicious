@@ -4,6 +4,7 @@ import Image from "next/image";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/lib/client";
 import imgUrl from "@/utils/imgUrl";
+import revalidationTime from "@/revalidationTime";
 
 export interface About {
   _id: string;
@@ -18,7 +19,15 @@ export interface About {
 
 const getData = async (): Promise<About[]> => {
   const query = `*[_type == 'about']`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(
+    query,
+    {},
+    {
+      next: {
+        revalidate: revalidationTime,
+      },
+    },
+  );
   return data;
 };
 
